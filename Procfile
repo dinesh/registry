@@ -1,0 +1,1 @@
+web: bundle exec thin --quiet --threads 8:32 --port $PORT config.ru

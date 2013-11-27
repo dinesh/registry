@@ -1,4 +1,4 @@
-registry
+Registry
 ========
 
-An sinatra/angular app for managing companies
+A sinatra/angular app for managing companies

@@ -1,0 +1,64 @@
+    <h4>Company details</h4>
+
+    <form name="companyForm" novalidate="novalidate" class="form-horizontal">
+
+        <div class="control-group">
+            <label class="control-label">Name:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.name"/>
+                <span class='help-inline' ng-show="errors.name">{{errors.name}}</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Email:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.email"/>
+                <span ng-show="errors.email">{{errors.email}}</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Address:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.address"/>
+                <span ng-show="errors.phone">{{errors.address}}</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">City:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.city"/>
+                <span ng-show="errors.phone">{{errors.city}}</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Country:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.country"/>
+                <span ng-show="errors.phone">{{errors.country}}</span>
+            </div>
+        </div>
+
+
+        <div class="control-group">
+            <label class="control-label">Phone:</label>
+            <div class="controls">
+                <input type="text" ng-model="company.phone"/>
+                <span ng-show="errors.phone">{{errors.phone}}</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+              <!-- user-detail.html: -->
+                <a ng-click="cancel()" class="btn btn-small">cancel</a>
+                <a ng-show="persist" ng-click="updateCompany()" class="btn btn-small btn-primary">update</a>
+              <!-- user-creation.html: -->
+                <a ng-hide="persist" ng-click="createNewCompany()" class="btn btn-small btn-primary">create new</a>
+            </div>
+        </div>
+
+    </form>

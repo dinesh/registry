@@ -1,0 +1,60 @@
+
+
+<div class='title'>
+    <h3>{{company.name}}</h3>
+    <button ng-click="editCompany(company.id)" class='btn'> Edit </button>
+</div>
+
+<table class='table'>
+    <tr> <td> Email </td> <td>{{ company.email }}</td> </tr>
+    <tr> <td> Address </td> <td>{{ company.address }}</td> </tr>
+    <tr> <td> City </td> <td>{{ company.city }}</td> </tr>
+    <tr> <td> Country </td> <td>{{ company.country }}</td> </tr>
+    <tr> <td> Phone </td> <td>{{ company.phone }}</td> </tr>
+</table>
+
+<div class='title'>
+    <h3> Owners & directors </h3>
+    <button ng-click="addOwner()" class='btn btn-priamry'> Add owner </button>
+    <div class='clearfix'> </div>
+</div>
+
+
+<div ng-show="showOwnerForm" class='row'>
+    <fieldset>
+        <form name="ownerForm" novalidate="novalidate" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Name:</label>
+                <div class="controls">
+                    <input class='input-large' type="text" ng-model="newOwner.name"/>
+                    <span class='help-inline' ng-show="errors.name">{{errors.name}}</span>
+                </div>
+            </div>
+
+            <div class='control-group'>
+                <div class='controls'>
+                    <span class='help-inline' ng-show="errors.passport_file_name">{{errors.name}}</span>
+                    <lvl-file-upload upload-url="/owners" max-files='1' max-file-size-mb='5'
+                    get-additional-data='getData(file)'
+                    choose-file-button-text="Choose file"
+                    upload-file-button-text='submit'
+                    on-done='done(files, data)'
+                    on-error='error(files, type, msg)' class='file-upload' />
+                </div>
+            </div>
+        </form>
+    </fieldset>
+
+</div>
+
+<div class='clearfix'> </div>
+
+<ul class='owner-list thumbnails' ng-show="owners.length">
+    <li ng-repeat="owner in owners" class='span2'>
+        <div class='caption'> <h4> {{ owner.name }} </h4> </div>
+        <a class="thumbnail" ng-click="addOwner(owner.id)">
+            <img src="{{owner.passport_file_name}}" />
+        </a>
+    </li>
+</ul>
+<div class='clearfix'> </div>

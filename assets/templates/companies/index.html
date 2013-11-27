@@ -1,0 +1,24 @@
+
+<div class="span10">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="min-width: 80px;">Company name</th>
+            <th style="min-width: 80px;">Email</th>
+            <th style="min-width: 80px;">Phone</th>
+            <th style="width:20px;"> </th>
+            <th style="width:20px;"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="company in companies">
+            <td><a ng-click="showCompany(company.id)"> {{ company.name }}</a></td>
+            <td>{{ company.email }}</td>
+            <td>{{ company.phone }} </td>
+            <td><a ng-click="editCompany(company.id)" class="btn btn-primary">Edit</a></td>
+            <td><a ng-click="deleteCompany(company.id)" class="btn btn-danger"> Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a ng-click="createNewCompany()" class="btn btn-small">create new company</a>
+</div>
