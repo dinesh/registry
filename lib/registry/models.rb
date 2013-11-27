@@ -1,5 +1,7 @@
 
+
 module Registry
+
   class Company < Sequel::Model
     plugin :validation_helpers
     set_primary_key :id

@@ -24,6 +24,7 @@ GEM
       bacon
       sequel (>= 3.2.0)
       sinatra (>= 0.9.4)
+    sqlite3 (1.3.8)
     tilt (1.4.1)
     uuidtools (2.1.4)
 
@@ -35,6 +36,8 @@ DEPENDENCIES
   multi_json
   pg
   puma
+  rack
   sequel
   sinatra
   sinatra-sequel
+  sqlite3

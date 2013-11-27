@@ -4,8 +4,6 @@ require 'sinatra/sequel'
 require 'json'
 require 'aws/s3'
 
-require_relative 'migrations'
-
 module Registry
   class App < Sinatra::Base
 
@@ -18,10 +16,8 @@ module Registry
       set :s3_secret, Config.s3_secret
 
       configure do
-        enable :logging, :dump_errors, :raise_errors, :show_exceptions
-        use Rack::CommonLogger
         set :database, Config.database_url
-        Sequel.connect(settings.database)
+        Sequel::Database.connect(settings.database)
       end
 
       get '/' do

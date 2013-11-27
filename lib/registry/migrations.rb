@@ -1,4 +1,6 @@
 
+Sequel.connect(Registry::Config.database_url)
+
 migration "create companies" do
     database.create_table :companies do
         primary_key :id
