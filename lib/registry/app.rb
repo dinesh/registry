@@ -41,7 +41,7 @@ module Registry
       end
 
       put '/companies/:id' do
-        company = Company.find params[:id]
+        company = Company.find(id: params[:id].to_i)
         raw['company'].delete('id')
         begin
           company.update(raw['company'])
@@ -52,7 +52,7 @@ module Registry
       end
 
       get '/companies/:id' do
-        company = Company.find(params[:id])
+        company = Company.find(id: params[:id].to_i)
         company.values.to_json
       end
 
@@ -69,7 +69,7 @@ module Registry
         attributes = { name: name, company_id: company_id, passport_file_name: filename, passport_content_type: qqfile[:type] }
         logger.info "id: #{id}, attributes: #{attributes}"
 
-        owner = id ? Owner.find(id) : Owner.new(attributes)
+        owner = id ? Owner.find(id: id.to_i) : Owner.new(attributes)
 
         begin
             id ? owner.update(attributes) : owner.save
