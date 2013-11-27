@@ -3,7 +3,7 @@ module Registry
     extend self
 
     def database_url
-      ENV['DATABASE_URL'] || 'sqlite://test.db'
+      ENV['DATABASE_URL'] || 'postgres://localhost/registry_dev'
     end
 
     def development?
