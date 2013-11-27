@@ -7,5 +7,5 @@ gem "sinatra"
 gem 'sequel'
 gem 'sinatra-sequel'
 gem "multi_json"
-gem 'thin'
+gem 'puma'
 gem 'aws-sdk', :require => "aws/s3"

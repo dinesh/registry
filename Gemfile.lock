@@ -6,12 +6,12 @@ GEM
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
     bacon (1.2.0)
-    daemons (1.1.9)
-    eventmachine (1.0.3)
     json (1.8.1)
     multi_json (1.8.2)
     nokogiri (1.5.10)
     pg (0.17.0)
+    puma (2.6.0)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
@@ -24,10 +24,6 @@ GEM
       bacon
       sequel (>= 3.2.0)
       sinatra (>= 0.9.4)
-    thin (1.6.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 1.0.0)
-      rack (>= 1.0.0)
     tilt (1.4.1)
     uuidtools (2.1.4)
 
@@ -38,7 +34,7 @@ DEPENDENCIES
   aws-sdk
   multi_json
   pg
+  puma
   sequel
   sinatra
   sinatra-sequel
-  thin
