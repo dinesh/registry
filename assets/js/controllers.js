@@ -29,7 +29,7 @@
             }
 
             $scope.deleteCompany = function(cid){
-                CompanyFactory.delete(cid);
+                Company.delete({ 'id': cid });
                 $scope.companies = Companies.query();
             }
         })

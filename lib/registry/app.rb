@@ -32,10 +32,13 @@ module Registry
       post '/companies' do
         halt(404) unless raw['company']
         company = Company.new(raw['company'])
+
         begin
           company.save
         rescue Sequel::ValidationFailed
-          halt 500, company.errors.to_json
+          halt 403, company.errors.to_json
+        rescue Exception => e
+          halt 500, { error: e }.to_json
         end
         company.values.to_json
       end
@@ -43,12 +46,28 @@ module Registry
       put '/companies/:id' do
         company = Company.find(id: params[:id].to_i)
         raw['company'].delete('id')
+
         begin
           company.update(raw['company'])
-          company.values.to_json
         rescue Sequel::ValidationFailed
-          halt 500, company.errors.to_json
+          halt 403, company.errors.to_json
+        rescue Exception => e
+          halt 500, { error: e }.to_json
         end
+        company.values.to_json
+
+      end
+
+      delete '/companies/:id' do
+        logger.info "deleting company id=#{params[:id]}"
+        company = Company.find(id: params[:id].to_i)
+        begin
+          company.remove_all_owners
+          company.delete
+          { success: 'ok' }.to_json
+        rescue Exception => e
+          halt 500, { error: e }
+         end
       end
 
       get '/companies/:id' do

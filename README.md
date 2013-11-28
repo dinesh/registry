@@ -94,6 +94,3 @@ Server: thin 1.6.1 codename Death Proof
 
 {"success":"ok"}
 ```
-
-
-

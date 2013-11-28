@@ -6,8 +6,7 @@ module Registry
     plugin :validation_helpers
     set_primary_key :id
 
-    one_to_many :employees
-    one_to_one :director
+    one_to_many :owners
 
     def validate
         validates_presence [:name, :address, :city, :country, :phone]

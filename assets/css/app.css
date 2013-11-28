@@ -11,7 +11,7 @@ body, html {
     min-height: 70%;
 }
 
-header h3 {
+header {
     border-bottom: 1px solid #888 ;
 }
 
@@ -20,7 +20,7 @@ header h3 {
     margin-right: 20px;
 }
 
-.title button {
+.title button, .title a {
     float: right;
     margin-top: 20px;
 }
