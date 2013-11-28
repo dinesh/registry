@@ -1,11 +1,9 @@
-
-
 module Registry
 
   class Company < Sequel::Model
+    has_versioning
     plugin :validation_helpers
     set_primary_key :id
-
     one_to_many :owners
 
     def validate
@@ -16,8 +14,8 @@ module Registry
     end
   end
 
-
   class Owner < Sequel::Model
+    has_versioning
     plugin :validation_helpers
     set_primary_key :id
     many_to_one :company
@@ -29,6 +27,12 @@ module Registry
             validates_includes ['image/png', 'image/jpeg', 'image/jpg'], :passport_content_type
         end
     end
+  end
+
+  class Version < Sequel::Model
+    plugin :serialization
+    plugin :dirty
+    serialize_attributes :marshal, :modifications
   end
 
 end

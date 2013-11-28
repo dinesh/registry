@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'rspec/core/rake_task'
 
 require_relative 'lib/registry/config'
 
@@ -35,4 +37,9 @@ namespace :db do
     Sequel::Migrator.run(DB, "migrations")
     Rake::Task['db:version'].execute
   end
+end
+
+RSpec::Core::RakeTask.new do |task|
+  task.rspec_opts = ["-c", "-f progress", "-r ./spec/spec_helper.rb"]
+  task.pattern    = 'spec/**/*_spec.rb'
 end

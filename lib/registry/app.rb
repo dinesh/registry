@@ -1,6 +1,7 @@
 
 require 'sinatra'
 require 'sinatra/sequel'
+require 'sequel_polymorphic'
 require 'json'
 require 'aws/s3'
 
