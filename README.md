@@ -11,12 +11,10 @@ foreman start
 ```
 
 ### Platform Install
-
 ```
 heroku config:add AWS_BUCKET=...
 heroku config:add AWS_ACCESS_KEY=...
 heroku config:add AWS_SECRET_KEY=..
-git push heroku master
 ```
 
 ### BACKEND API
@@ -52,17 +50,49 @@ $] curl -s http://techregistry.herokuapp.com/companies
 
 ##### CREATE a company
 ``` bash
-$] curl -F "name=Google" \ 
-        -F "email=fake@google.com" \
-        -F "address=MountainView,CA" \
-        -F "phone=0192019012" \
-        -F "city=MountainView" \
-        -F "country=US" http://techregistry.herokuapp.com/companies
+$] curl -d "{\"company\":{\"name\":\"Google\",\"email\":\"fake@google.com\",\"address\":\"MountainView, CA\",\"phone\":\"789 123 1239\",\"city\":\"MountainView\",\"country\":\"US\"}}" http://techregistry.herokuapp.com/companies
 ```
+``` bash
+{
+  "stamp": null,
+  "phone": "789 123 1239",
+  "country": "US",
+  "city": "MountainView",
+  "address": "MountainView, CA",
+  "email": "fake@google.com",
+  "name": "Google",
+  "id": 15
+}
+```
+#### Update a company
+``` bash
+$] curl -X PUT -d "{\"company\":{\"country\":\"United States\"}}" http://techregistry.herokuapp.com/companies/15
+```
+``` bash
+{
+  "stamp": null,
+  "phone": "789 123 1239",
+  "country": "United States",
+  "city": "MountainView",
+  "address": "MountainView, CA",
+  "email": "fake@google.com",
+  "name": "Google",
+  "id": 15
+}
+```
+
 #### DELETE a company and owners
 ```bash
-$] curl -i -X DELETE http://techregistry.herokuapp.com//companies/2
+$] curl -i -X DELETE http://techregistry.herokuapp.com/companies/15
+```
+``` bash
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=utf-8
+Content-Length: 16
+Connection: keep-alive
+Server: thin 1.6.1 codename Death Proof
 
+{"success":"ok"}
 ```
 
 
